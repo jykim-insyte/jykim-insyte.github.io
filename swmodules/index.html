@@ -5,25 +5,40 @@
 </head>
 <body>
   <div class="mermaid">
-    graph LR
+    graph RL
+    
     id_psoc["PSoC FW"]
-    id_test["Test/Qual SW"]
     id_nordic["Nordic FW"]
-    id_apk["Android BLE App"]
+    id_ble_apk["Android BLE App"]
     id_porting_apk["Android Sensor App"]
+    id_linux_driver["Linux Driver"]
+    id_hal["HAL"]
+    id_algorithm["Algorithm"]
+    id_stratos["Stratos"]
+
+    
+    subgraph Test / Qual SW
+        id_stratos
+    end
     subgraph Demo SW
         id_nordic
-        id_apk
+        id_ble_apk
     end
-    subgraph Porting Kit
-        Driver
-        HAL
+    subgraph Android Porting Kit
+        id_linux_driver
+        id_hal
         id_porting_apk
     end
-    
-    Driver --> id_psoc
-    HAL --> Algorithm
-    Algorithm --> id1
+
+    id_psoc --> id_algorithm
+    id_psoc --> id_linux_driver
+    id_psoc --> id_stratos
+    id_psoc --> id_nordic
+    id_algorithm --> id_nordic
+    id_algorithm --> id_stratos
+    id_algorithm --> id_hal
+    id_hal --> id_porting_apk
+    id_nordic --> id_ble_apk
   </div>
   <script src="node_modules/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({startOnLoad:true});</script>
