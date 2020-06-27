@@ -5,17 +5,17 @@
 </head>
 <body>
   <div class="mermaid">
-    graph RL
+graph RL
     
-    id_psoc["PSoC FW"]
-    id_nordic["Nordic FW"]
-    id_ble_apk["Android BLE App"]
-    id_porting_apk["Android Sensor App"]
-    id_linux_driver["Linux Driver"]
-    id_hal["HAL"]
-    id_algorithm["Algorithm"]
-    id_stratos["Stratos"]
-
+    id_psoc(PSoC FW)
+    id_nordic(Nordic FW)
+    id_ble_apk(Android BLE App)
+    id_porting_apk(Android Sensor App)
+    id_linux_driver(Linux Driver)
+    id_hal(HAL)
+    id_algorithm(Algorithm)
+    id_stratos(Stratos)
+    id_test_report[(Test Report)]
     
     subgraph Test / Qual SW
         id_stratos
@@ -39,6 +39,7 @@
     id_algorithm --> id_hal
     id_hal --> id_porting_apk
     id_nordic --> id_ble_apk
+    id_test_report --> id_algorithm
   </div>
   <script src="https://jykim-insyte.github.io/swmodules/node_modules/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({startOnLoad:true});</script>
